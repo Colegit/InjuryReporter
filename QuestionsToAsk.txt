@@ -1,0 +1,27 @@
+How would you rate your overall pain today?
+Scale 1 - 10 
+
+Did you perform your perscribed excersises today?
+Yes/No
+
+Did an event occur that caused a setback?
+e.g. shovelled snow, running etc. 
+Yes/no
+Yes - prompts [box] entry
+
+Did you visit a medical professional today?
+Yes/No
+Yes - Was this your first visit? Yes/No
+Yes - promts a list to open for selection
+physiotherapist, massage therapy, accupuncture, other[box]
+
+Notes from today:
+[box] 500 words 
+
+
+
+
+
+
+
+

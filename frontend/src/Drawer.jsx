@@ -49,7 +49,7 @@ const TheDrawer = () => {
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" noWrap>
-              Glorified Stock Ticker
+              Injury Reporter
             </Typography>
           </Toolbar>
         </AppBar>
@@ -78,7 +78,7 @@ const TheDrawer = () => {
                 <ListItemIcon>
                   <MeetingRoomIcon/>
                 </ListItemIcon>
-                  <ListItemText primary="Logout"></ListItemText>
+                  <ListItemText primary="Data Dashboard"></ListItemText>
             </ListItem>
         </List>
 
