@@ -36,15 +36,23 @@ class App extends Component {
 
     }
   }
+  submitData = () => {
+    fetch('/insert', {
+      method: 'POST',
+      body: JSON.stringify({
+        content: this.state
+      })
 
-  hello = () => {
-    fetch('/test').then(response => {
-      if(response.ok){
-        console.log("connected")
-      }
-    }).then(data => this.setState({statevar: "connected to flask"}))
-
+    })
   }
+//  hello = () => {
+//    fetch('/test').then(response => {
+//      if(response.ok){
+//        console.log("connected")
+//      }
+//    }).then(data => this.setState({statevar: "connected to flask"}))
+
+//  }
 
   value = 10
   //https://www.youtube.com/watch?v=PLPVJa9jzS0
@@ -210,7 +218,7 @@ class App extends Component {
       <Button
       variant="contained"
       color="primary"
-      onClick={this.hello}
+      onClick={this.submitData}
       >Submit</Button>
       <br></br>
       {this.state.statevar}

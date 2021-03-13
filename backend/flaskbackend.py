@@ -1,52 +1,46 @@
 print("calling to flask")
-from flask import Flask 
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from flask import Flask, request, json, jsonify
+import sqlite3
+import datetime
+
 
 app = Flask(__name__)
 
-# Documentation: https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#connection-uri-format
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///stockticker.db'
-
-db = SQLAlchemy(app)
-
-# Table models in sqlite
-class User(db.Model):
-    CUSTID      = db.Column(db.Integer, primary_key = True, nullable=False )
-    email       = db.Column(db.String(100), unique=True, nullable=False)
-    password    = db.Column(db.String(120), unique=True, nullable=False)
-    DateCreated = db.Column(db.DateTime, default=datetime.now)
-
-class StockConnector(db.Model):
-    CUSTID      = db.Column(db.Integer, primary_key = True, nullable=False)
-    STOCKID     = db.Column(db.Integer, primary_key = True, nullable=False)
-
-class StocksFollowed(db.Model):
-    STOCKID     = db.Column(db.Integer, primary_key = True, nullable=False)
-    Symbol      = db.Column(db.String(10), nullable=False)
-    Open        = db.Column(db.Integer, nullable=False)
-    High        = db.Column(db.Integer, nullable=False)
-    Low         = db.Column(db.Integer, nullable=False)
-    Close       = db.Column(db.Integer, nullable=False)
-
-class StocksWatched(db.Model):
-    CUSTID      = db.Column(db.Integer, primary_key = True, nullable=False )
-    STOCKID     = db.Column(db.Integer, primary_key = True, nullable=False)
-    UNIQUEID    = db.Column(db.Integer, nullable=False)
-    Notifyby    = db.Column(db.String(10), nullable=False)
-    Column      = db.Column(db.String(10), nullable=False)
-    Boolean     = db.Column(db.String(20), nullable=False)
-    Number      = db.Column(db.Integer, nullable=False)
 
 
+@app.route('/insert', methods=['POST'])
+def dbconnect():
 
-@app.route('/<email>/<password>')
-def addData(email, password):
-  user = User(email=email, password=password) 
-  db.session.add(user)
-  db.session.commit()
+  frontdata = json.loads(request.data)
+  print(frontdata)
+  print(frontdata.get('content'))
+  #json extraction of individual values from a 2d json https://stackoverflow.com/questions/47729562/how-to-address-multidimensional-json-array-in-python/47729655
+  print(frontdata['content']['pain'])
 
-  return '<h1> added a new user <h1>'
+  # Variables of the values from the passed in from the json sent from the frontend
+  pain        = frontdata['content']['pain']
+  excersise   = frontdata['content']['excersise']
+  setback     = frontdata['content']['setback']
+  setbackdesc = frontdata['content']['setbackdesc']
+  doc         = frontdata['content']['doc']
+  docdesc     = frontdata['content']['docdesc']
+  notes       = frontdata['content']['notes']
+  day         = datetime.date.today()
+  now         = datetime.now()
+  time        = now.strftime("%H:%M")
+
+  print(day)
+  print(time)
+
+
+  return 'test'
+
+  #db = sqlite3.connect('../injurydb.db')
+  #cursor = db.cursor()
+  #cursor.execute('INSERT INTO dataentry (pain, excersise, setback, setbackdesc, docvisit, doctype, notes, todaydate, currenttime) VALUES("7", "YES", "YES", "too much phone", "YES", "physiotherapist", "physio added new strength excersises", "2020-01-25", "13:35:12")')
+  #db.commit()
+
+  #return 'dbconnect'
 
 @app.route('/test')
 def test():
