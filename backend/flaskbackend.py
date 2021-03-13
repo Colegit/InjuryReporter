@@ -1,7 +1,7 @@
 print("calling to flask")
 from flask import Flask, request, json, jsonify
 import sqlite3
-import datetime
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -25,22 +25,29 @@ def dbconnect():
   doc         = frontdata['content']['doc']
   docdesc     = frontdata['content']['docdesc']
   notes       = frontdata['content']['notes']
-  day         = datetime.date.today()
-  now         = datetime.now()
-  time        = now.strftime("%H:%M")
+  curtime     = datetime.now()
+  day         = curtime.date()
+  time        = curtime.strftime("%H:%M")
 
   print(day)
   print(time)
 
+  print(setbackdesc)
 
-  return 'test'
+  print(notes)
 
-  #db = sqlite3.connect('../injurydb.db')
-  #cursor = db.cursor()
-  #cursor.execute('INSERT INTO dataentry (pain, excersise, setback, setbackdesc, docvisit, doctype, notes, todaydate, currenttime) VALUES("7", "YES", "YES", "too much phone", "YES", "physiotherapist", "physio added new strength excersises", "2020-01-25", "13:35:12")')
-  #db.commit()
+  params = (pain, excersise, setback, setbackdesc, doc, docdesc, notes, day, time)
 
-  #return 'dbconnect'
+
+  
+
+  db = sqlite3.connect('../injurydb.db')
+  cursor = db.cursor()
+  cursor.execute("INSERT INTO dataentry (pain, excersise, setback, setbackdesc, docvisit, doctype, notes, todaydate, currenttime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", params)
+  db.commit()
+  print(cursor.execute('select * from dataentry;'))
+
+  return 'dbconnect'
 
 @app.route('/test')
 def test():

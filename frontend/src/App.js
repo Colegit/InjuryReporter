@@ -102,9 +102,15 @@ class App extends Component {
     else{
       this.setState({showdocdesc: false})
       this.setState({docdesc: ""})
-    }
+    };
+  }
 
+  doctordesc = (e) => {
+    this.setState({docdesc: e.target.value})
+  }
 
+  thenotes = (e) => {
+    this.setState({notes: e.target.value})
   }
 
   render(){
@@ -195,6 +201,7 @@ class App extends Component {
       getOptionLabel={(option) => option.title}
       style={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="Type your provider here" variant="outlined" />}
+      onChange={this.doctordesc}
     />
   </Grid>
 </div>
@@ -211,6 +218,7 @@ class App extends Component {
           multiline
           rows={5}
           variant="outlined"
+          onChange={this.thenotes}
         />
   </Grid>
 
