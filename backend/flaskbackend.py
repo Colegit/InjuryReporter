@@ -23,11 +23,19 @@ def dbconnect():
   setback     = frontdata['content']['setback']
   setbackdesc = frontdata['content']['setbackdesc']
   doc         = frontdata['content']['doc']
-  docdesc     = frontdata['content']['docdesc']
+  
   notes       = frontdata['content']['notes']
   curtime     = datetime.now()
   day         = curtime.date()
   time        = curtime.strftime("%H:%M")
+
+  #If no data is entered for doctor description and py tries to access the 'title' of the doctor, it will return an error as no doctor title was entered. 
+  try:
+    docdesc   = frontdata['content']['docdesc']['title']
+  except:
+    docdesc   = ""
+
+  print(docdesc)
 
   print(day)
   print(time)

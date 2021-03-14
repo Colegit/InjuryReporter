@@ -105,8 +105,9 @@ class App extends Component {
     };
   }
 
-  doctordesc = (e) => {
-    this.setState({docdesc: e.target.value})
+  doctordesc = (e, v) => {
+    this.setState({docdesc: v})
+    console.log(v)
   }
 
   thenotes = (e) => {
@@ -199,6 +200,7 @@ class App extends Component {
       id="combo-box-demo"
       options={medtype}
       getOptionLabel={(option) => option.title}
+      value={medtype.find(obj => obj.title)} // set selected value
       style={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="Type your provider here" variant="outlined" />}
       onChange={this.doctordesc}
