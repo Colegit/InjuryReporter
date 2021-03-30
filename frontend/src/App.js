@@ -16,6 +16,15 @@ import FormLabel from '@material-ui/core/FormLabel';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+// Dark mode one day https://www.npmjs.com/package/react-dark-mode-toggle
+
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
 
 class App extends Component {
@@ -116,6 +125,9 @@ class App extends Component {
 
   render(){
     return (
+
+
+
 
       <div className="App">
       <TheDrawer/>

@@ -14,7 +14,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import TimelineIcon from '@material-ui/icons/Timeline';
+import EditIcon from '@material-ui/icons/Edit';
+import {Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 
+import Analytics from './analytics'
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +47,17 @@ const useStyles = makeStyles((theme) => ({
 
 const TheDrawer = () => {
     const classes = useStyles()
+
+
+
+
+
     return(
+
+      
         <div className={classes.root}>
         <CssBaseline />
+        
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" noWrap>
@@ -64,8 +76,12 @@ const TheDrawer = () => {
       >
         <div className={classes.toolbar} />
         <Divider />
+
+        <Router>
+        
+
         <List>
-            <ListItem button>
+            <ListItem button >
                 <ListItemIcon>
                   <HomeIcon/>
                 </ListItemIcon>
@@ -74,13 +90,36 @@ const TheDrawer = () => {
         </List>
 
         <List>
+
+          <Link to="./analytics">
             <ListItem button>
                 <ListItemIcon>
-                  <MeetingRoomIcon/>
+                  <TimelineIcon/>
                 </ListItemIcon>
                   <ListItemText primary="Data Dashboard"></ListItemText>
             </ListItem>
+            </Link>
+
         </List>
+
+        <List>
+            <ListItem button>
+                <ListItemIcon>
+                  <EditIcon/>
+                </ListItemIcon>
+                  <ListItemText primary="Make Edits"></ListItemText>
+            </ListItem>
+        </List>
+
+        <Route
+          path="./analytics.js"
+          component={Analytics}
+          exact
+          />
+
+
+
+        </Router>
 
 
 
