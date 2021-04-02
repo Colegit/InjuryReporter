@@ -16,9 +16,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import EditIcon from '@material-ui/icons/Edit';
-import {Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom'
+import {Link, Route, Switch, BrowserRouter as Router, withRouter} from 'react-router-dom'
 
 import Analytics from './analytics'
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +48,12 @@ const useStyles = makeStyles((theme) => ({
 
 const TheDrawer = () => {
     const classes = useStyles()
+  
+const AnalyticsLink = () => {
+
+  return <Link to= "/analytics" component={Analytics} />
+
+}
 
 
 
@@ -77,11 +84,12 @@ const TheDrawer = () => {
         <div className={classes.toolbar} />
         <Divider />
 
-        <Router>
+       
+
         
 
         <List>
-            <ListItem button >
+            <ListItem button component={Link} to="/">
                 <ListItemIcon>
                   <HomeIcon/>
                 </ListItemIcon>
@@ -91,19 +99,19 @@ const TheDrawer = () => {
 
         <List>
 
-          <Link to="./analytics">
-            <ListItem button>
+
+            <ListItem component={Link} to="/analytics">
                 <ListItemIcon>
                   <TimelineIcon/>
                 </ListItemIcon>
                   <ListItemText primary="Data Dashboard"></ListItemText>
             </ListItem>
-            </Link>
+ 
 
         </List>
 
         <List>
-            <ListItem button>
+            <ListItem button component={Link} to="/edit">
                 <ListItemIcon>
                   <EditIcon/>
                 </ListItemIcon>
@@ -111,15 +119,12 @@ const TheDrawer = () => {
             </ListItem>
         </List>
 
-        <Route
-          path="./analytics.js"
-          component={Analytics}
-          exact
-          />
 
 
 
-        </Router>
+
+
+       
 
 
 

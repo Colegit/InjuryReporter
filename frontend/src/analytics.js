@@ -16,6 +16,13 @@ import FormLabel from '@material-ui/core/FormLabel';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
+import Paper from '@material-ui/core/Paper';
+
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
+
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
 
 class Analytics extends Component {
@@ -39,7 +46,22 @@ class Analytics extends Component {
             <br></br>
             <br>
             </br>
-            <h1> a good amount of text</h1>
+            <h1> This will be for the graphs and analytics</h1>
+
+    <React.Fragment>
+      <h1>Recent Deposits</h1>
+      <Typography component="p" variant="h4">
+        $3,024.00
+      </Typography>
+      <Typography color="textSecondary" >
+        on 15 March, 2019
+      </Typography>
+      <div>
+        <h1 >
+          View balance
+        </h1>
+      </div>
+    </React.Fragment>
         </div>
     )
   }

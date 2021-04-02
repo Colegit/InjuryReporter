@@ -16,12 +16,10 @@ import FormLabel from '@material-ui/core/FormLabel';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import Analytics from './analytics'
+import Home from './home'
+import Edit from './edit'
+import {Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 
 // Dark mode one day https://www.npmjs.com/package/react-dark-mode-toggle
 
@@ -45,15 +43,15 @@ class App extends Component {
 
     }
   }
-  submitData = () => {
-    fetch('/insert', {
-      method: 'POST',
-      body: JSON.stringify({
-        content: this.state
-      })
+ // submitData = () => {
+ //   fetch('/insert', {
+ //     method: 'POST',
+ //     body: JSON.stringify({
+ //       content: this.state
+ //     })
 
-    })
-  }
+ //   })
+ // }
 //  hello = () => {
 //    fetch('/test').then(response => {
 //      if(response.ok){
@@ -130,120 +128,21 @@ class App extends Component {
 
 
       <div className="App">
+      {/*In order for router to work between the drawer and the app page, we can only have one router, 
+      or you will click the button, the url will change, but nothing will load. This is due to
+      the problem if two routers are in both files, it wont render the second one Explanation: https://stackoverflow.com/questions/48640280/you-should-not-use-link-outside-a-router */}
+      <Router>
       <TheDrawer/>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2>Fill out your answers and press the 'Submit' button </h2>
-      <br></br>
-      <h3>1) How would you rate your injury pain right now?</h3>
-    <Grid container justify ="center">
-      <Box width="25%">
-      <Slider
-        onChange={this.PainRating}
-        defaultValue={0}
-        aria-labelledby="discrete-slider"
-        step={10}
-        //need to extract value somehow
-        valueLabelDisplay="auto"
-        //value={something}
-        min={0}
-        max={100}
-      />
-      </Box>
-    </Grid>
 
-    <br></br>
-    <h3>2) Did you do your daily perscribed excersises?</h3>
-    <Grid container justify ="center">
-  <RadioGroup aria-label="anonymous" name="anonymous" onChange={this.WorkoutChange} row>
-    <FormControlLabel value="YES" control={<Radio />} label="Yes" />
-    <FormControlLabel value="NO" control={<Radio />} label="No" />
-  </RadioGroup>
-   </Grid>
-   <br></br>
-   <h3>3) Did you have a setback today?</h3>
-   <Grid container justify ="center">
-  <RadioGroup aria-label="anonymous" name="anonymous" onChange={this.SetbackChange} row>
-    <FormControlLabel value="YES" control={<Radio />} label="Yes" />
-    <FormControlLabel value="NO" control={<Radio />} label="No" />
-  </RadioGroup>
-  </Grid>
-
-   
-  <div>{this.state.showSetback
-  ?  <div>
-    <h3>What Happened?</h3>
-  
-    <Grid container justify ="center">
-    <br></br>
-    <TextField
-        onChange={this.whathappened}
-        id="outlined-multiline-static"
-        label="Setback Description"
-        multiline
-        rows={5}
-        variant="outlined"
-      />
-    </Grid>
-    </div>
-  : <p></p>
-  
-  }
-  </div>
+      
+        <Switch>
+          <Route exact path="/analytics" render={props => <Analytics {...props}  />} />
+          <Route exact path="/" render={props => <Home {...props}  />} />
+          <Route exact path="/edit" render={props => <Edit {...props}  />} />
+        </Switch>
+      </Router>
 
 
-  <br></br>
-  <h3>3) Did you see a medical practitioner or health expert today?</h3>
-   <Grid container justify ="center">
-  <RadioGroup aria-label="anonymous" name="anonymous" onChange={this.DoctorVisit} row>
-    <FormControlLabel value="YES" control={<Radio />} label="Yes" />
-    <FormControlLabel value="NO" control={<Radio />} label="No" />
-  </RadioGroup>
-  </Grid>
-
-  <br></br>
-
-<div>{this.state.showdocdesc
-? <div>
-  <h3>What type?</h3>
-  <Grid container justify ="center">
-  <Autocomplete
-      id="combo-box-demo"
-      options={medtype}
-      getOptionLabel={(option) => option.title}
-      value={medtype.find(obj => obj.title)} // set selected value
-      style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Type your provider here" variant="outlined" />}
-      onChange={this.doctordesc}
-    />
-  </Grid>
-</div>
-: <p></p>
-  }
-</div>
-
-  <h3>Notes</h3>
-  <Grid container justify ="center">
-    <br></br>
-   <TextField
-          id="outlined-multiline-static"
-          label="Notes from today"
-          multiline
-          rows={5}
-          variant="outlined"
-          onChange={this.thenotes}
-        />
-  </Grid>
-
-    <br></br>
-      <Button
-      variant="contained"
-      color="primary"
-      onClick={this.submitData}
-      >Submit</Button>
-      <br></br>
-      {this.state.statevar}
       </div>
 
     )
