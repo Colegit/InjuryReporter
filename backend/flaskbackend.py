@@ -53,17 +53,20 @@ def dbconnect():
   cursor = db.cursor()
   cursor.execute("INSERT INTO dataentry (pain, excersise, setback, setbackdesc, docvisit, doctype, notes, todaydate, currenttime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", params)
   db.commit()
-  print(cursor.execute('select * from dataentry;'))
+
 
   return 'dbconnect'
 
-@app.route('/test')
-def test():
-  return {
-    'json': 'data'
-  }
+@app.route('/averagepain', methods=['GET'])
+def avgpain():
+  db = sqlite3.connect('../injurydb.db')
+  cursor = db.cursor()
+  cursor.execute("Select pain, todaydate from dataentry")
+  
+  results = cursor.fetchall()
+  print(results)
+  return jsonify(results)
+
 
 if __name__=='__main__':
   app.run(port=5000, debug=True)
-
-#https://www.youtube.com/watch?v=wDWyOMHqPHY

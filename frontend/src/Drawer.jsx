@@ -18,6 +18,8 @@ import TimelineIcon from '@material-ui/icons/Timeline';
 import EditIcon from '@material-ui/icons/Edit';
 import {Link, Route, Switch, BrowserRouter as Router, withRouter} from 'react-router-dom'
 
+import { spacing } from '@material-ui/system';
+
 import Analytics from './analytics'
 
 const drawerWidth = 240;
@@ -74,12 +76,14 @@ const AnalyticsLink = () => {
         </AppBar>
 
       <Drawer
+        p={20}
         className={classes.drawer}
         variant="permanent"
         classes={{
           paper: classes.drawerPaper,
         }}
         anchor="left"
+        
       >
         <div className={classes.toolbar} />
         <Divider />
@@ -100,7 +104,7 @@ const AnalyticsLink = () => {
         <List>
 
 
-            <ListItem component={Link} to="/analytics">
+            <ListItem button component={Link} to="/analytics">
                 <ListItemIcon>
                   <TimelineIcon/>
                 </ListItemIcon>
