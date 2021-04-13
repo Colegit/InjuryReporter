@@ -61,7 +61,7 @@ def dbconnect():
 def avgpain():
   db = sqlite3.connect('../injurydb.db')
   cursor = db.cursor()
-  cursor.execute("Select pain, todaydate from dataentry")
+  cursor.execute("Select pain, todaydate, setbackdesc from dataentry")
   
   results = cursor.fetchall()
   print(results)

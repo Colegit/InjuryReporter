@@ -23,6 +23,9 @@ import Container from '@material-ui/core/Container';
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+import {
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
 
@@ -30,13 +33,15 @@ class Analytics extends Component {
   constructor(){
     super();
     this.state = {
-      graph: []
+      graph: [],
+      painavg: []
       
       //Hide and show elements
 
     }
   }
 
+  //Get the sql table from the flask backend
   avgpain = () => {
     fetch('/averagepain').then(response => {
       if(response.ok){
@@ -52,6 +57,40 @@ class Analytics extends Component {
 
   }
 
+  //Calculate the average pain rating
+  calcaverage = () => {
+
+    let thedata = this.state.graph.length
+    let statepain = this.state.painavg
+
+    //extract the pain values from the array
+    for(let i = 0; i < thedata; i++ ) {
+      let thepain = this.state.graph[i][0]
+
+      this.state.painavg.push(thepain)
+    }
+
+    // getting array total https://stackoverflow.com/questions/1230233/how-to-find-the-sum-of-an-array-of-numbers
+    let total = 0;
+    for(let i in statepain){
+      total += statepain[i]
+    }
+
+    // calculate the mean
+    let FinalAvgPain = Number(total) / Number(thedata);
+
+    //set the state variable to the mean average
+    this.setState({painavg: FinalAvgPain})
+
+
+    console.log(this.state.painavg)
+    console.log(total)
+    console.log(FinalAvgPain)
+
+
+
+  }
+
 
 
 
@@ -59,6 +98,7 @@ class Analytics extends Component {
     return (
 
         <div>
+          
 
             <br></br>
             <br></br>
@@ -69,7 +109,7 @@ class Analytics extends Component {
 
 
 
-            <Grid className="containerGrid" container spacing={3}>
+            <Grid className="containerGrid" justify="spacing around" container spacing={3}>
         <Grid item xs={12} md={8} lg={9} >
           <Paper>xs=12</Paper>
         </Grid>
@@ -86,21 +126,21 @@ class Analytics extends Component {
             bottom: 0,
           }}
         >f
-          <CartesianGrid strokeDasharray="3 " />
-          <XAxis dataKey="1" />
-          <YAxis type="number" datakey ="0" />
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis name="Date" dataKey="1" />
+          <YAxis name="Pain" type="number" datakey ="0" />
           <Tooltip />
-          <Area type="monotone" dataKey="1" stroke="#8884d8" fill="#8884d8" />
+          <Area name="Pain Rating" type="monotone" dataKey="0" stroke="#8884d8" fill="#8884d8" />
         </AreaChart>
       </ResponsiveContainer>
         </Grid>
         <Grid className="itemGrid" item xs={4} >
         <h1>Average Pain Rating</h1>
       <Typography component="p" variant="h4">
-        20
+        {this.state.painavg}
       </Typography>
       <Typography color="textSecondary" >
-        February 01 - March 01
+        Since Inception
       </Typography>
         </Grid>
         </Grid>
@@ -111,7 +151,7 @@ class Analytics extends Component {
         20
       </Typography>
       <Typography color="textSecondary" >
-        February 01 - March 01
+        Since inception
       </Typography>
       <div>
         <h1 >
@@ -119,6 +159,8 @@ class Analytics extends Component {
         </h1>
       </div>
     </React.Fragment>
+
+    
 
     <Button
       variant="contained"
@@ -129,7 +171,7 @@ class Analytics extends Component {
 <Button
       variant="contained"
       color="primary"
-      onClick={this.graphdata}
+      onClick={this.calcaverage}
       >Test graph state data</Button>
 
         </div>
