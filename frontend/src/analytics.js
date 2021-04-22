@@ -109,23 +109,25 @@ class Analytics extends Component {
 
 
 
-            <Grid className="containerGrid" justify="spacing around" container spacing={3}>
+        <Grid className="containerGrid" justify="spacing around" container spacing={3}>
         <Grid item xs={12} md={8} lg={9} >
-          <Paper>xs=12</Paper>
+          <Paper >xs=12</Paper>
         </Grid>
         <Grid className="itemGrid" item xs={8} >
+
         <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           width={500}
           height={800}
           data={this.state.graph}
           margin={{
+            padding: 20,
             top: 10,
             right: 30,
             left: 0,
             bottom: 0,
           }}
-        >f
+        >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis name="Date" dataKey="1" />
           <YAxis name="Pain" type="number" datakey ="0" />
