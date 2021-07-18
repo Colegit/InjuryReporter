@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import React, {Component, PureComponent} from 'react'
 import Button from '@material-ui/core/Button';
 import './App.css';
-import TheDrawer from './Drawer.jsx'
+
 import Slider from '@material-ui/core/Slider';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -23,11 +23,38 @@ import Container from '@material-ui/core/Container';
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+import Drawer from './Drawer.jsx'
+
 import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 
+import {
+  CBadge,
+  CButton,
+  CButtonGroup,
+  CCard,
+  CCardBody,
+  CCardFooter,
+  CCardHeader,
+  CCol,
+  CProgress,
+  CRow,
+  CCallout
+} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+import TheDrawer from './Drawer'
+
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
+
+//using hooks inside class components https://stackoverflow.com/questions/56432167/how-to-style-components-using-makestyles-and-still-have-lifecycle-methods-in-mat
 
 class Analytics extends Component {
   constructor(){
@@ -78,14 +105,16 @@ class Analytics extends Component {
 
     // calculate the mean
     let FinalAvgPain = Number(total) / Number(thedata);
+    let rounded = FinalAvgPain.toFixed(1)
 
     //set the state variable to the mean average
-    this.setState({painavg: FinalAvgPain})
+    this.setState({painavg: rounded})
 
 
     console.log(this.state.painavg)
     console.log(total)
     console.log(FinalAvgPain)
+
 
 
 
@@ -95,6 +124,15 @@ class Analytics extends Component {
 
 
   render(){
+
+
+
+    const item = {
+      color: "white"
+
+    };
+
+
     return (
 
         <div>
@@ -108,11 +146,36 @@ class Analytics extends Component {
             <br></br>
 
 
+    <div >
+      <Grid container spacing={3} >
+        <Grid item xs>
+          <Paper style={item}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper style={item}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper style={item}>xs</Paper>
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs>
+          <Paper style={item}>xs</Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper style={item}>xs=6</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper style={item}>xs</Paper>
+        </Grid>
+      </Grid>
+    </div>
+        
 
-        <Grid className="containerGrid" justify="spacing around" container spacing={3}>
         <Grid item xs={12} md={8} lg={9} >
           <Paper >xs=12</Paper>
         </Grid>
+        <Grid className="containerGrid" justify="spacing around" container spacing={3}>
         <Grid className="itemGrid" item xs={8} >
 
         <ResponsiveContainer width="100%" height="100%">
@@ -148,13 +211,7 @@ class Analytics extends Component {
         </Grid>
 
     <React.Fragment>
-      <h1>Average Pain Rating</h1>
-      <Typography component="p" variant="h4">
-        20
-      </Typography>
-      <Typography color="textSecondary" >
-        Since inception
-      </Typography>
+
       <div>
         <h1 >
           
@@ -180,6 +237,7 @@ class Analytics extends Component {
     )
   }
 }
+
 
 const data = [
   {
@@ -227,7 +285,7 @@ const data = [
 ];
 
 
-export default Analytics;
+ export default Analytics;
 
 
 

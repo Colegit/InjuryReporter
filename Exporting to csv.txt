@@ -1,0 +1,7 @@
+open datadase sqlite3 .open injurydb.db
+
+.mode csv
+
+.output monthPhysioData.csv
+
+select * from dataentry;

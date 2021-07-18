@@ -133,13 +133,13 @@ class App extends Component {
       the problem if two routers are in both files, it wont render the second one Explanation: https://stackoverflow.com/questions/48640280/you-should-not-use-link-outside-a-router */}
       <Router>
       <TheDrawer/>
-
-      
+      <main>
         <Switch>
           <Route exact path="/analytics" render={props => <Analytics {...props}  />} />
           <Route exact path="/" render={props => <Home {...props}  />} />
           <Route exact path="/edit" render={props => <Edit {...props}  />} />
         </Switch>
+      </main>
       </Router>
 
 

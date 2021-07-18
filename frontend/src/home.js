@@ -57,6 +57,9 @@ class Home extends Component {
       })
 
     })
+
+    this.setState({notes: ''})
+ 
   }
 //  hello = () => {
 //    fetch('/test').then(response => {
@@ -135,9 +138,6 @@ class Home extends Component {
 
       <div className="App">
 
-      <br></br>
-      <br></br>
-      <br></br>
       <h2>Fill out your answers and press the 'Submit' button </h2>
       <br></br>
       <h3>1) How would you rate your injury pain right now?</h3>

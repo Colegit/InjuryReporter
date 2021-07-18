@@ -6,8 +6,6 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-
-
 @app.route('/insert', methods=['POST'])
 def dbconnect():
 
