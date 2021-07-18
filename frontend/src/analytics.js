@@ -114,30 +114,13 @@ class Analytics extends Component {
     console.log(this.state.painavg)
     console.log(total)
     console.log(FinalAvgPain)
-
-
-
-
   }
-
-
-
-
   render(){
-
-
-
-    const item = {
-      color: "white"
-
-    };
-
 
     return (
 
         <div>
           
-
             <br></br>
             <br></br>
             <br>
@@ -145,33 +128,31 @@ class Analytics extends Component {
             <h1> This will be for the graphs and analytics</h1>
             <br></br>
 
-
-    <div >
+    <div>
       <Grid container spacing={3} >
         <Grid item xs>
-          <Paper style={item}>xs</Paper>
+          <Paper >xs</Paper>
         </Grid>
         <Grid item xs>
-          <Paper style={item}>xs</Paper>
+          <Paper>xs</Paper>
         </Grid>
         <Grid item xs>
-          <Paper style={item}>xs</Paper>
+          <Paper>xs</Paper>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
         <Grid item xs>
-          <Paper style={item}>xs</Paper>
+          <Paper>xs</Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper style={item}>xs=6</Paper>
+          <Paper>xs=6</Paper>
         </Grid>
         <Grid item xs>
-          <Paper style={item}>xs</Paper>
+          <Paper>xs</Paper>
         </Grid>
       </Grid>
     </div>
         
-
         <Grid item xs={12} md={8} lg={9} >
           <Paper >xs=12</Paper>
         </Grid>
@@ -219,8 +200,6 @@ class Analytics extends Component {
       </div>
     </React.Fragment>
 
-    
-
     <Button
       variant="contained"
       color="primary"
@@ -237,7 +216,6 @@ class Analytics extends Component {
     )
   }
 }
-
 
 const data = [
   {
@@ -283,7 +261,6 @@ const data = [
     amt: 2100,
   },
 ];
-
 
  export default Analytics;
 

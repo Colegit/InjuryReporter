@@ -121,10 +121,16 @@ class App extends Component {
     this.setState({notes: e.target.value})
   }
 
+
   render(){
+
+    //sytle all Route pages with a global css https://stackoverflow.com/questions/47898017/react-router-css-for-all-routes
+    const item = {
+      display: 'flex',
+      textAlign: "center",
+      flex: 1
+    };
     return (
-
-
 
 
       <div className="App">
@@ -132,8 +138,9 @@ class App extends Component {
       or you will click the button, the url will change, but nothing will load. This is due to
       the problem if two routers are in both files, it wont render the second one Explanation: https://stackoverflow.com/questions/48640280/you-should-not-use-link-outside-a-router */}
       <Router>
+
+      <main style={item}>
       <TheDrawer/>
-      <main>
         <Switch>
           <Route exact path="/analytics" render={props => <Analytics {...props}  />} />
           <Route exact path="/" render={props => <Home {...props}  />} />
