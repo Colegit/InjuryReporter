@@ -127,8 +127,11 @@ class App extends Component {
     //sytle all Route pages with a global css https://stackoverflow.com/questions/47898017/react-router-css-for-all-routes
     const item = {
       display: 'flex',
-      textAlign: "center",
-      flex: 1
+      //alignItems: 'center',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      width: '100%',
+      height: '100%'
     };
     return (
 

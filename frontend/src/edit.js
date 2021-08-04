@@ -31,9 +31,14 @@ class Edit extends Component {
 
 
   render(){
+
+    const item = {
+      textAlign: "center",
+      flex: 1
+    };
     return (
 
-        <div>
+        <div className={item}>
 
             <br></br>
             <br></br>
