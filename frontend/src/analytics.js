@@ -52,6 +52,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import TheDrawer from './Drawer'
 
+
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
 
 //using hooks inside class components https://stackoverflow.com/questions/56432167/how-to-style-components-using-makestyles-and-still-have-lifecycle-methods-in-mat
@@ -117,9 +118,16 @@ class Analytics extends Component {
   }
   render(){
 
+    const ParentBoxCSS = {
+      flexShrink: 0,
+      
+    };
+
     return (
 
-        <div>
+        <div className={ParentBoxCSS}>
+          <Card>
+            <CardContent>
           
             <br></br>
             <br></br>
@@ -190,6 +198,9 @@ class Analytics extends Component {
       </Typography>
         </Grid>
         </Grid>
+
+        </CardContent>
+        </Card>
 
     <React.Fragment>
 

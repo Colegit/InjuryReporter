@@ -27,6 +27,25 @@ import {
   Link
 } from "react-router-dom";
 
+
+import {
+  CBadge,
+  CButton,
+  CButtonGroup,
+  CCard,
+  CCardBody,
+  CCardFooter,
+  CCardHeader,
+  CCol,
+  CProgress,
+  CRow,
+  CCallout
+} from '@coreui/react'
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
 // Dark mode one day https://www.npmjs.com/package/react-dark-mode-toggle
 
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
@@ -138,6 +157,9 @@ class Home extends Component {
 
       <div className="App">
 
+      <Card>
+        <CardContent>
+
       <h2>Fill out your answers and press the 'Submit' button </h2>
       <br></br>
       <h3>1) How would you rate your injury pain right now?</h3>
@@ -248,6 +270,9 @@ class Home extends Component {
       >Submit</Button>
       <br></br>
       {this.state.statevar}
+
+        </CardContent>
+      </Card>
       </div>
 
     )

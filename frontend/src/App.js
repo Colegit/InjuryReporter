@@ -21,6 +21,10 @@ import Home from './home'
 import Edit from './edit'
 import {Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
 // Dark mode one day https://www.npmjs.com/package/react-dark-mode-toggle
 
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
@@ -125,31 +129,55 @@ class App extends Component {
   render(){
 
     //sytle all Route pages with a global css https://stackoverflow.com/questions/47898017/react-router-css-for-all-routes
-    const item = {
+    const main = {
       display: 'flex',
       //alignItems: 'center',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      width: '100%',
-      height: '100%'
-    };
+      //flexWrap: 'wrap',
+      //justifyContent: 'center',
+      //width: '100%',
+      //height: '100%'
+      padding: '80px',
+      flexShrink: 2,
+      //flexDirection: 'row-reverse',
+      //flexFlow: 'column nowrap'
+      //flex: 'flex-shrink'
+      
+    }
+
+    const routesCSS = {
+     // background-color: #f1f1f1;
+      //margin: 10px;
+      //padding: 20px;
+      width: '100%'
+    }
+      
+
     return (
 
 
-      <div className="App">
+      <div>
       {/*In order for router to work between the drawer and the app page, we can only have one router, 
       or you will click the button, the url will change, but nothing will load. This is due to
       the problem if two routers are in both files, it wont render the second one Explanation: https://stackoverflow.com/questions/48640280/you-should-not-use-link-outside-a-router */}
       <Router>
 
-      <main style={item}>
+      <div style={main}>
+
       <TheDrawer/>
+
+      
         <Switch>
+          <div style={routesCSS}>
+          <Card>
           <Route exact path="/analytics" render={props => <Analytics {...props}  />} />
           <Route exact path="/" render={props => <Home {...props}  />} />
           <Route exact path="/edit" render={props => <Edit {...props}  />} />
+          </Card>
+          </div>
         </Switch>
-      </main>
+
+
+      </div>
       </Router>
 
 
