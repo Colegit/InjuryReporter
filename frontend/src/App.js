@@ -136,8 +136,9 @@ class App extends Component {
       //justifyContent: 'center',
       //width: '100%',
       //height: '100%'
-      padding: '80px',
-      flexShrink: 2,
+      paddingTop: '80px',
+      paddingRight: '80px',
+      //flexShrink: 1,
       //flexDirection: 'row-reverse',
       //flexFlow: 'column nowrap'
       //flex: 'flex-shrink'

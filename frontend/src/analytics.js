@@ -119,51 +119,21 @@ class Analytics extends Component {
   render(){
 
     const ParentBoxCSS = {
-      flexShrink: 0,
+      textAlign: 'center'
       
     };
 
     return (
 
+
         <div className={ParentBoxCSS}>
-          <Card>
-            <CardContent>
+
+        {this.avgpain()}
           
-            <br></br>
-            <br></br>
-            <br>
-            </br>
             <h1> This will be for the graphs and analytics</h1>
             <br></br>
 
-    <div>
-      <Grid container spacing={3} >
-        <Grid item xs>
-          <Paper >xs</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper>xs</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper>xs</Paper>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <Paper>xs</Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper>xs=6</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper>xs</Paper>
-        </Grid>
-      </Grid>
-    </div>
         
-        <Grid item xs={12} md={8} lg={9} >
-          <Paper >xs=12</Paper>
-        </Grid>
         <Grid className="containerGrid" justify="spacing around" container spacing={3}>
         <Grid className="itemGrid" item xs={8} >
 
@@ -199,17 +169,6 @@ class Analytics extends Component {
         </Grid>
         </Grid>
 
-        </CardContent>
-        </Card>
-
-    <React.Fragment>
-
-      <div>
-        <h1 >
-          
-        </h1>
-      </div>
-    </React.Fragment>
 
     <Button
       variant="contained"
