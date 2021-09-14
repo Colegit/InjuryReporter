@@ -52,6 +52,8 @@ import CardContent from '@material-ui/core/CardContent';
 
 import TheDrawer from './Drawer'
 
+import { CardHeader } from '@material-ui/core';
+
 
 //hiding components https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
 
@@ -118,10 +120,18 @@ class Analytics extends Component {
   }
   render(){
 
-    const ParentBoxCSS = {
-      textAlign: 'center'
-      
+    const NumberCards = {
+      textAlign: 'center',
+      width: '100%',
+      height: '100%',
     };
+    const TypogBuffer = {
+      padding: 50
+    }
+    const TypoHeaderStyle = {
+      color: '#FFFFFF'
+    }
+
 
     return (
 
@@ -137,38 +147,78 @@ class Analytics extends Component {
 
       <Grid container spacing={3}>
         <Grid item xs={3}>
-        <Card>
-            <CardContent>test</CardContent>
+        <Card style={NumberCards}>
+          <CardHeader
+          //style={{backgroundColor: "#f8bbd0"}} 
+          
+          title={
+            <Typography  variant="h5" component="h1">
+               <b>Average Pain Rating</b>
+            </Typography>
+         } />
+            <CardContent>
+              <Typography style={TypogBuffer}>something</Typography>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={3}>
         <Card>
-            <CardContent>test</CardContent>
+            <CardContent>
+            <Typography variant="h5" component="h2">Average Pain Rating</Typography>
+              <br></br>
+              <Typography style={TypogBuffer}>something</Typography>
+              <br></br>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={3}>
         <Card>
-            <CardContent>test</CardContent>
+            <CardContent>
+            <Typography variant="h5" component="h2">Average Pain Rating</Typography>
+              <br></br>
+              <Typography style={TypogBuffer}>something</Typography>
+              <br></br>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={3}>
         <Card>
-            <CardContent>test</CardContent>
+            <CardContent>
+            <Typography variant="h5" component="h2">Average Pain Rating</Typography>
+              <br></br>
+              <Typography style={TypogBuffer}>something</Typography>
+              <br></br>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={6}>
         <Card>
-            <CardContent>test</CardContent>
+            <CardContent>
+            <Typography variant="h5" component="h2">Average Pain Rating</Typography>
+              <br></br>
+              <Typography style={TypogBuffer}>something</Typography>
+              <br></br>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={6}>
         <Card>
-            <CardContent>test</CardContent>
+            <CardContent>
+            <Typography variant="h5" component="h2">Average Pain Rating</Typography>
+              <br></br>
+              <Typography style={TypogBuffer}>something</Typography>
+              <br></br>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12}>
           <Card>
-            <CardContent>test</CardContent>
+            <CardContent>
+            <Typography variant="h5" component="h2">Average Pain Rating</Typography>
+              <br></br>
+              <Typography style={TypogBuffer}>something</Typography>
+              <br></br>
+            </CardContent>
           </Card>
         </Grid>
       </Grid>
