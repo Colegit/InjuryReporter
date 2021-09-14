@@ -169,11 +169,11 @@ class App extends Component {
       
         <Switch>
           <div style={routesCSS}>
-          <Card>
+          <Grid>
           <Route exact path="/analytics" render={props => <Analytics {...props}  />} />
           <Route exact path="/" render={props => <Home {...props}  />} />
           <Route exact path="/edit" render={props => <Edit {...props}  />} />
-          </Card>
+          </Grid>
           </div>
         </Switch>
 

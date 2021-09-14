@@ -126,12 +126,52 @@ class Analytics extends Component {
     return (
 
 
-        <div className={ParentBoxCSS}>
+        <div >
 
+      {/*
         {this.avgpain()}
+        */}
           
             <h1> This will be for the graphs and analytics</h1>
             <br></br>
+
+      <Grid container spacing={3}>
+        <Grid item xs={3}>
+        <Card>
+            <CardContent>test</CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={3}>
+        <Card>
+            <CardContent>test</CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={3}>
+        <Card>
+            <CardContent>test</CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={3}>
+        <Card>
+            <CardContent>test</CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6}>
+        <Card>
+            <CardContent>test</CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6}>
+        <Card>
+            <CardContent>test</CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>test</CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
         
         <Grid className="containerGrid" justify="spacing around" container spacing={3}>
